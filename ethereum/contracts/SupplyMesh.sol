@@ -105,7 +105,7 @@ contract SupplyMesh {
         if (!bountyEntry.claimed && !bountyEntry.accepted) {
             data.insert(max_key, bountyEntry.price, bountyEntry.description, true, bountyEntry.accepted, bountyEntry.paid);
             return true;
-        } return false;
+        } else return false;
     }
 
     // Allows a receiving entity to accept a bid placed by an individual
