@@ -1,0 +1,25 @@
+supplymesh/package-lock.json
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+supplymesh/node_modules
+supplymesh/.pnp
+.pnp.js
+
+# testing
+supplymesh/coverage
+
+# production
+supplymesh/build
+
+# misc
+supplymesh/.DS_Store
+supplymesh/.env.local
+supplymesh/.env.development.local
+supplymesh/.env.test.local
+supplymesh/.env.production.local
+
+supplymesh/npm-debug.log*
+supplymesh/yarn-debug.log*
+supplymesh/yarn-error.log*
+ethereum/build
