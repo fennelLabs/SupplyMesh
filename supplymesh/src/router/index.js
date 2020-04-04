@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import LandingPage from '@/components/LandingPage'
 import SupplyMesh from '@/components/SupplyMesh'
-import pollWeb3 from '../util/pollWeb3'
 
 Vue.use(Router)
 
