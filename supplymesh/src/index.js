@@ -3,6 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Drizzle } from "@drizzle/store";
+import SupplyMesh from "../../ethereum/build/SupplyMesh.json"
+
+const options = {
+  contracts: [SupplyMesh],
+  web3: {
+    fallback: {
+      type: "ws",
+      url: "ws://127.0.0.1:7545",
+    },
+  },
+};
+
+const drizzle = Drizzle(options);
 
 ReactDOM.render(
   <React.StrictMode>
