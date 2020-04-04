@@ -27,7 +27,7 @@ The back end code for SupplyMesh runs on Ethereum.  The smart contract that defi
 The front end webpage for SupplyMesh is currently hosted in 2 locations.  To support a fully blockchain based implementation, the front end website is hosted on IPFS, a peer-to-peer hypermedia protocol.  We also appreciate that for SupplyMesh to be successful, we need it to not only be functional, but also easily accessible, which is why we also have the frontend hosted serverlessly on Microsoft's Azure cloud platform to support http based access from all modern web browsers.
 
 ## Challenges we ran into
-
+Ethereum has changed quite a lot since we last worked with it - there was a bit of a learning curve to getting adapted to the new changes in the web3 libraries powering Ethereum.
 
 ## Accomplishments that we're proud of
 
