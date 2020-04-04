@@ -21,129 +21,93 @@ export default {
     }
   },
   methods: {
-    // TODO Right now, this is just a bit of a roadmap for how to connect our functions
     placeBid (event) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.contractInstance().bet(event.target.innerHTML, {
+      this.$store.state.contractInstance().placeBidOnBounty(event.target.innerHTML, {
         gas: 300000,
         value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
         from: this.$store.state.web3.coinbase
       }, (err, result) => {
         if (err) {
-          console.log(err)
-          this.pending = false
+          
         } else {
-          let Won = this.$store.state.contractInstance().Won()
-          Won.watch((err, result) => {
-            if (err) {
-              console.log('could not get event Won()')
-            } else {
-              this.winEvent = result.args
-              this.winEvent._amount = parseInt(result.args._amount, 10)
-              this.pending = false
-            }
-          })
+          
         }
       })
     },
     acceptBid (event) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.contractInstance().bet(event.target.innerHTML, {
+      this.$store.state.contractInstance().acceptBidOnBounty(event.target.innerHTML, {
         gas: 300000,
         value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
         from: this.$store.state.web3.coinbase
       }, (err, result) => {
         if (err) {
-          console.log(err)
-          this.pending = false
+          
         } else {
-          let Won = this.$store.state.contractInstance().Won()
-          Won.watch((err, result) => {
-            if (err) {
-              console.log('could not get event Won()')
-            } else {
-              this.winEvent = result.args
-              this.winEvent._amount = parseInt(result.args._amount, 10)
-              this.pending = false
-            }
-          })
+          
+        }
+      })
+    },
+    rejectBid (event) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().rejectBidOnBounty(event.target.innerHTML, {
+        gas: 300000,
+        value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
+        from: this.$store.state.web3.coinbase
+      }, (err, result) => {
+        if (err) {
+          
+        } else {
+          
         }
       })
     },
     addBounty (event) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.contractInstance().bet(event.target.innerHTML, {
+      this.$store.state.contractInstance().addBountyForEntity(event.target.innerHtml, event.target.innerHTML, {
         gas: 300000,
         value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
         from: this.$store.state.web3.coinbase
       }, (err, result) => {
         if (err) {
-          console.log(err)
-          this.pending = false
+          
         } else {
-          let Won = this.$store.state.contractInstance().Won()
-          Won.watch((err, result) => {
-            if (err) {
-              console.log('could not get event Won()')
-            } else {
-              this.winEvent = result.args
-              this.winEvent._amount = parseInt(result.args._amount, 10)
-              this.pending = false
-            }
-          })
+          
         }
       })
     },
     payBounty (event) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.contractInstance().bet(event.target.innerHTML, {
+      this.$store.state.contractInstance().payBountyForEntity(event.target.innerHTML, {
         gas: 300000,
         value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
         from: this.$store.state.web3.coinbase
       }, (err, result) => {
         if (err) {
-          console.log(err)
-          this.pending = false
+          
         } else {
-          let Won = this.$store.state.contractInstance().Won()
-          Won.watch((err, result) => {
-            if (err) {
-              console.log('could not get event Won()')
-            } else {
-              this.winEvent = result.args
-              this.winEvent._amount = parseInt(result.args._amount, 10)
-              this.pending = false
-            }
-          })
+          
         }
       })
     },
     fundBounty (event) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.contractInstance().bet(event.target.innerHTML, {
+      this.$store.state.contractInstance().fundBountyForEntity(event.target.innerHTML, event.target.innerHTML, {
         gas: 300000,
         value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
         from: this.$store.state.web3.coinbase
       }, (err, result) => {
         if (err) {
-          console.log(err)
-          this.pending = false
+          
         } else {
-          let Won = this.$store.state.contractInstance().Won()
-          Won.watch((err, result) => {
-            if (err) {
-              console.log('could not get event Won()')
-            } else {
-              this.winEvent = result.args
-              this.winEvent._amount = parseInt(result.args._amount, 10)
-              this.pending = false
-            }
-          })
+          
         }
       })
     }
