@@ -7,6 +7,9 @@ struct IndexValue {
     // bounty price offered
     uint price;
 
+    address payable lowest_bidder;
+    address payable next_lowest_bidder;
+
     // the currently-funded balance
     uint balance;
 
@@ -31,9 +34,11 @@ struct itmap {
 
 // IterableMapping library from the solidity docs.
 library IterableMapping {
-    function insert(itmap storage self, uint key, uint price, string memory description, bool claimed, bool accepted, bool paid) internal returns (bool replaced) {
+    function insert(itmap storage self, uint key, uint price, address payable lowest_bidder, address payable next_lowest_bidder, string memory description, bool claimed, bool accepted, bool paid) internal returns (bool replaced) {
         uint keyIndex = self.data[key].keyIndex;
         self.data[key].price = price;
+        self.data[key].lowest_bidder = lowest_bidder;
+        self.data[key].next_lowest_bidder = next_lowest_bidder;
         self.data[key].balance = 0;
         self.data[key].poster = msg.sender;
         self.data[key].description = description;
@@ -58,7 +63,7 @@ library IterableMapping {
             return false;
         delete self.data[key];
         self.keys[keyIndex - 1].deleted = true;
-        self.size --;
+        self.size--;
     }
 
     function contains(itmap storage self, uint key) internal view returns (bool) {
@@ -83,13 +88,15 @@ library IterableMapping {
     function iterate_get(itmap storage self, uint keyIndex) internal view returns (IndexValue memory value) {
         uint key = self.keys[keyIndex].key;
         uint price = self.data[key].price;
+        address payable lowest_bidder = self.data[key].lowest_bidder;
+        address payable next_lowest_bidder = self.data[key].next_lowest_bidder;
         uint balance = self.data[key].balance;
         address poster = self.data[key].poster;
         string memory description = self.data[key].description;
         bool claimed = self.data[key].claimed;
         bool accepted = self.data[key].accepted;
         bool paid = self.data[key].paid;
-        return IndexValue(key, price, balance, poster, description, claimed, accepted, paid);
+        return IndexValue(key, price, lowest_bidder, next_lowest_bidder, balance, poster, description, claimed, accepted, paid);
     }
 }
 
@@ -103,7 +110,7 @@ contract SupplyMesh {
     function placeBidOnBounty(uint key) public returns (bool) {
         IndexValue memory bountyEntry = data.iterate_get(key);
         if (!bountyEntry.claimed && !bountyEntry.accepted) {
-            data.insert(max_key, bountyEntry.price, bountyEntry.description, true, bountyEntry.accepted, bountyEntry.paid);
+            data.insert(max_key, bountyEntry.price, msg.sender, bountyEntry.lowest_bidder, bountyEntry.description, true, bountyEntry.accepted, bountyEntry.paid);
             return true;
         } else return false;
     }
@@ -113,7 +120,7 @@ contract SupplyMesh {
     function acceptBidOnBounty(uint key) public returns (bool) {
         IndexValue memory bountyEntry = data.iterate_get(key);
         if (bountyEntry.claimed) {
-            data.insert(max_key, bountyEntry.price, bountyEntry.description, bountyEntry.claimed, true, bountyEntry.paid);
+            data.insert(max_key, bountyEntry.price, bountyEntry.lowest_bidder, bountyEntry.next_lowest_bidder, bountyEntry.description, bountyEntry.claimed, true, bountyEntry.paid);
             return true;
         } else return false;
     }
@@ -121,24 +128,24 @@ contract SupplyMesh {
     function rejectBidOnBounty(uint key) public returns (bool) {
         IndexValue memory bountyEntry = data.iterate_get(key);
         if (bountyEntry.claimed) {
-            data.insert(max_key, bountyEntry.price, bountyEntry.description, bountyEntry.claimed, false, bountyEntry.paid);
+            data.insert(max_key, bountyEntry.price, bountyEntry.next_lowest_bidder, bountyEntry.next_lowest_bidder, bountyEntry.description, bountyEntry.claimed, false, bountyEntry.paid);
             return true;
         } else return false;
     }
 
     // The owner of a specific entity adds bounties to their list through this function.
     function addBountyForEntity(uint price, string memory description) public returns (bool) {
-        data.insert(max_key, price, description, false, false, false);
+        data.insert(max_key, price, msg.sender, msg.sender, description, false, false, false);
         max_key++;
         return true;
     }
 
     // Pays out the bounty to the accepted bid
     // Takes an address and a bounty key number as arguments
-    function payBountyForEntity(address payable bidder, uint key) public returns (bool) {
+    function payBountyForEntity(uint key) public returns (bool) {
         IndexValue memory bountyEntry = data.iterate_get(key);
         if (!bountyEntry.paid && bountyEntry.claimed && bountyEntry.accepted) {
-            bidder.transfer(bountyEntry.price);
+            bountyEntry.lowest_bidder.transfer(bountyEntry.price);
             return true;
         } else return false;
     }
@@ -150,7 +157,7 @@ contract SupplyMesh {
         if (bountyEntry.paid) {
             if (bountyEntry.balance + volume > bountyEntry.price) {
                 poster.transfer((bountyEntry.balance + volume) - bountyEntry.price);
-                data.insert(max_key, bountyEntry.price, bountyEntry.description, bountyEntry.claimed, bountyEntry.accepted, true);
+                data.insert(max_key, bountyEntry.price, bountyEntry.lowest_bidder, bountyEntry.next_lowest_bidder, bountyEntry.description, bountyEntry.claimed, bountyEntry.accepted, true);
                 return true;
             } else {
                 poster.transfer(volume);
