@@ -9,9 +9,6 @@ supplymesh/.pnp
 # testing
 supplymesh/coverage
 
-# production
-supplymesh/build
-
 # misc
 supplymesh/.DS_Store
 supplymesh/.env.local
