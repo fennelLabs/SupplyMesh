@@ -1,9 +1,11 @@
 <template>
 
+<div>
 <div id="status">
 </div>
 
 <div id="main">
+</div>
 </div>
 
 </template>
@@ -19,7 +21,7 @@ export default {
     }
   },
   methods: {
-      // TODO Right now, this is just a bit of a roadmap for how to connect our functions
+    // TODO Right now, this is just a bit of a roadmap for how to connect our functions
     placeBid (event) {
       this.winEvent = null
       this.pending = true
@@ -68,7 +70,8 @@ export default {
             }
           })
         }
-      })},
+      })
+    },
     addBounty (event) {
       this.winEvent = null
       this.pending = true
@@ -92,7 +95,8 @@ export default {
             }
           })
         }
-      })},
+      })
+    },
     payBounty (event) {
       this.winEvent = null
       this.pending = true
@@ -116,7 +120,8 @@ export default {
             }
           })
         }
-      })},
+      })
+    },
     fundBounty (event) {
       this.winEvent = null
       this.pending = true
@@ -140,7 +145,8 @@ export default {
             }
           })
         }
-      })}
+      })
+    }
   },
   mounted () {
     console.log('dispatching getContractInstance')
