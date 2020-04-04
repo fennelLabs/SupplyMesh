@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Drizzle } from "@drizzle/store";
-import SupplyMesh from "../../ethereum/build/SupplyMesh.json"
+import SupplyMesh from "./ethereum/SupplyMesh.json"; // Once compiled, the ABI for the smart contract should be copied here
 
 const options = {
   contracts: [SupplyMesh],
