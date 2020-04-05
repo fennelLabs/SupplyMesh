@@ -17,20 +17,27 @@ Vendors can then make bids to fulfill these supply requests, competing with each
 
 Individuals can browse requests and participate in crowdfunding them.
 
-When
+The transparent and imutable nature of the blockchain presents a unique ability to trace the entire history of any vendor, allowing hospitals to determine whether or not they should accept a bid. 
 
 ## How we built it
 SupplyMesh is a Decentralized Application.
 
-The back end code for SupplyMesh runs on Ethereum.  The smart contract that defines the logic behind SupplyMesh is written in Solidity.
+The back end code for SupplyMesh runs on Ethereum.  The smart contract that defines the logic behind SupplyMesh is written in Solidity, a language designed for writing applications that take advantage of the natural decentralized features of Ethereum.
 
-The front end webpage for SupplyMesh is currently hosted in 2 locations.  To support a fully blockchain based implementation, the front end website is hosted on IPFS, a peer-to-peer hypermedia protocol.  We also appreciate that for SupplyMesh to be successful, we need it to not only be functional, but also easily accessible, which is why we also have the frontend hosted serverlessly on Microsoft's Azure cloud platform to support http based access from all modern web browsers.
+The front end webpage for SupplyMesh is currently hosted serverlessly on Microsoft's Azure cloud platform to support HTTP-based access from all modern web browsers.
 
 ## Challenges we ran into
-Ethereum has changed quite a lot since we last worked with it - there was a bit of a learning curve to getting adapted to the new changes in the web3 libraries powering Ethereum.
+Ethereum has changed quite a lot since the majority of us last worked with it - there was a bit of a learning curve to getting adapted to the new changes in the web3 libraries powering Ethereum.
+
+Working out which web frameworks would adequately support web3 and Metamask took a bit of time - we expected to use React for our frontend and a framework called Drizzle for interacting with Ethereum, but it turned out that Vue.js was more familiar to several of our developers and had perfectly adequate support for web3 libraries out of the box.
 
 ## Accomplishments that we're proud of
+Blockchain-based Dapps have become increasingly popular in the last few years, but are a fairly young and at times untested technology. The fact that we were able to design, develop, and roll out the application we ended up with in a single weekend is no small feat.
 
 ## What we learned
+* Several of us took a serious look at Solidity and Ethereum app development for the first time.
 
 ## What's next for Supply Mesh
+We'd like to host this as a fully self-sufficient application, independent of any kind of cloud or server hosting, on something like IPFS or Filecoin. We'd also like to add support for some of the other Dapp platforms and chains that have emerged beside Ethereum.
+
+In terms of financial functionality, we'd like to add features that can more fully lock down funds transferred from donors to ensure that the money they've contributed is used for its intended purpose; we'd even like to add optional functions to allow donors to transfer money to a hospital to be used in future crowdfunding efforts.
