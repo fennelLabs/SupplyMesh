@@ -56,7 +56,7 @@
 
   <header class="masthead"  style="padding-top: 75px; height: auto;">
     <div class="container text-dark rounded-top" style="background-color: RGBA(248, 249, 250, .8);" id="app">
-      <h1 style="padding-top: .3em;">{{heading}} </h1>
+      <h1 style="padding-top: .3em;">{{heading}}</h1>
       <div class="d-flex flex-wrap justify-content-around">
         <supply-request
         v-for="request in requests"
@@ -101,7 +101,7 @@
       <div class="card" style="width: 18rem; margin-bottom: 2em;">
         <img class="card-img-top" v-bind:src="request.img" alt="Card image cap">
         <div class="card-body">
-          <h3 class="card-title">{{request.title}}</h5>
+          <h3 class="card-title">{{request.title}}</h3>
           <p class="card-text">{{request.description}}
             <br>
             <span class="text-muted">{{request.hospital}}</span>
@@ -111,11 +111,11 @@
         </div>
       </div>
       `
-
     })
     const vueApp = new Vue({
       el: '#app',
-      data: { 
+      data: {
+      web3: null,
       heading: 'Request Gallery',
       requests: [
       { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
@@ -127,11 +127,20 @@
       { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
       { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
       { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  }
-      ]
+      ],
       },
       methods: {
 
-      }
+      },
+      created: function() {
+          if (typeof web3 !== 'undefined') {
+              var web3Provider = web3.currentProvider;
+              this.web3 = new Web3(web3.currentProvider);
+          } else {
+              var web3Provider = new web3.providers.HttpProvider('http://127.0.0.1:7545');
+              this.web3 = new Web3(App.web3Provider);
+          }
+      }     
     })
   </script>
 </body>
