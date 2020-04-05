@@ -17,19 +17,20 @@ Vendors can then make bids to fulfill these supply requests, competing with each
 
 Individuals can browse requests and participate in crowdfunding them.
 
-When
+The hospital can view the entire history of a vendor's interactions.
 
 ## How we built it
 SupplyMesh is a Decentralized Application.
 
-The back end code for SupplyMesh runs on Ethereum.  The smart contract that defines the logic behind SupplyMesh is written in Solidity.
+The back end code for SupplyMesh runs on Ethereum.  The smart contract that defines the logic behind SupplyMesh is written in Solidity, a language designed for writing applications that take advantage of the natural decentralized features of Ethereum.
 
-The front end webpage for SupplyMesh is currently hosted in 2 locations.  To support a fully blockchain based implementation, the front end website is hosted on IPFS, a peer-to-peer hypermedia protocol.  We also appreciate that for SupplyMesh to be successful, we need it to not only be functional, but also easily accessible, which is why we also have the frontend hosted serverlessly on Microsoft's Azure cloud platform to support http based access from all modern web browsers.
+The front end webpage for SupplyMesh is currently hosted serverlessly on Microsoft's Azure cloud platform to support HTTP-based access from all modern web browsers.
 
 ## Challenges we ran into
 Ethereum has changed quite a lot since we last worked with it - there was a bit of a learning curve to getting adapted to the new changes in the web3 libraries powering Ethereum.
 
 ## Accomplishments that we're proud of
+Blockchain-based Dapps have become increasingly popular in the last few years, but are a fairly young and at times untested technology. The fact that we were able to design, develop, and roll out the application we ended up with in a single weekend is no small feat.
 
 ## What we learned
 
