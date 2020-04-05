@@ -55,8 +55,13 @@
   </nav>
 
   <header class="masthead"  style="padding-top: 75px;">
-    <div class="container h-100 bg-light" id="app">
-      <h1 class="text-dark">{{heading}}</h1>
+    <div class="container h-100 text-dark" style="background-color: RGBA(248, 249, 250, .8);" id="app">
+      <h1>{{heading}} </h1>
+      <supply-request
+      v-for="request in requests"
+      v-bind:key="request.id"
+      v-bind:request="request"
+    ></supply-request>
     </div>
   </header>
 
@@ -87,26 +92,39 @@
   <!-- Custom scripts for this template -->
   <script src="js/new-age.min.js"></script>
   <script>
-  Vue.component('ColoredBox', {
-    template: "<div class=\"box\"><button v-on:click=\"toggleMe()\">Toggle Now</button></div>",
-    methods: {
-      toggleMe() {
-        this.$root.toggleBox()
+    Vue.component('supply-request', {
+      props: ['request'],
+      template:
+      `
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{request.img}}" alt="Card image cap">
+        <div class="card-body">
+          <h3 class="card-title">{{request.title}}</h5>
+          <p class="card-text">{{request.description}}
+            <br>
+            <span class="text-muted">{{request.hospital}}</span>
+            <br>
+            <span class="card-text text-success">$ {{request.funding}} raised</span>
+          </p>
+        </div>
+      </div>
+      `
+
+    })
+    const vueApp = new Vue({
+      el: '#app',
+      data: { 
+      heading: 'Request Gallery',
+      requests: [
+      { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
+      { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
+      { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  }
+      ]
+      },
+      methods: {
+
       }
-    }
-  })
-  const vueApp = new Vue({
-    el: '#app',
-    data: { 
-     display: 'redbox',
-     heading: 'Request Gallery'
-    },
-    methods: {
-      toggleBox() {
-        this.display == 'redbox' ? this.display = 'greenbox' : this.display = 'redbox'
-      }
-    }
-  })
+    })
   </script>
 </body>
 
