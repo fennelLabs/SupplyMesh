@@ -1,4 +1,9 @@
 Vue.component('SupplyMesh', {
+	props: {
+		amount: null,
+		pending: false,
+		winEvent: null,
+	},
 	template: "<div></div>",
 	methods: {
 		placeBid (event) {
@@ -93,3 +98,16 @@ Vue.component('SupplyMesh', {
 		}
 	}
 })
+
+
+/*
+ * NEEDED IN REQUESTS.HTML
+
+componentWillMount() {
+	const web3 = new Web3(
+		new Web3.providers.HttpsProvider('https://mainnet.infura.io')
+	);
+	web3.eth.getStorageAt(...).then(...)
+	web3.eth.getBlock('latest').then(console.log)
+}
+*/
