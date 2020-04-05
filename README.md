@@ -27,11 +27,14 @@ The back end code for SupplyMesh runs on Ethereum.  The smart contract that defi
 The front end webpage for SupplyMesh is currently hosted serverlessly on Microsoft's Azure cloud platform to support HTTP-based access from all modern web browsers.
 
 ## Challenges we ran into
-Ethereum has changed quite a lot since we last worked with it - there was a bit of a learning curve to getting adapted to the new changes in the web3 libraries powering Ethereum.
+Ethereum has changed quite a lot since the majority of us last worked with it - there was a bit of a learning curve to getting adapted to the new changes in the web3 libraries powering Ethereum.
+
+Working out which web frameworks would adequately support web3 and Metamask took a bit of time - we expected to use React for our frontend and a framework called Drizzle for interacting with Ethereum, but it turned out that Vue.js was more familiar to several of our developers and had perfectly adequate support for web3 libraries out of the box.
 
 ## Accomplishments that we're proud of
 Blockchain-based Dapps have become increasingly popular in the last few years, but are a fairly young and at times untested technology. The fact that we were able to design, develop, and roll out the application we ended up with in a single weekend is no small feat.
 
 ## What we learned
+* Several of us took a serious look at Solidity and Ethereum app development for the first time.
 
 ## What's next for Supply Mesh
