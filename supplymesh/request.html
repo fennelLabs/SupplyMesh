@@ -56,13 +56,20 @@
 
   <header class="masthead"  style="padding-top: 75px; height: auto;">
     <div class="container text-dark rounded-top" style="background-color: RGBA(248, 249, 250, .8);" id="app">
-      <h1 style="padding-top: .3em;">{{heading}} </h1>
-      <div class="d-flex flex-wrap justify-content-around align-items-stretch">
-        <supply-request
-        v-for="request in requests"
-        v-bind:key="request.id"
-        v-bind:request="request"
-        ></supply-request>
+      <h1 style="padding-top: .3em;">Request #{{heading}} </h1>
+      <div class="d-flex flex-wrap justify-content-around">
+        <div class="card" style="width: auto; margin-bottom: 2em;" >
+        <img class="card-img-top" :src="request.img" alt="Card image cap">
+            <div class="card-body">
+                <h3 class="card-title">{{request.title}}</h5>
+                <p class="card-text">{{request.description}}
+                <br>
+                <span class="text-muted">{{request.hospital}}</span>
+                <br>
+                <span class="card-text text-success">$ {{request.funding}} raised</span>
+                </p>
+            </div>
+        </div>
       </div>
     </div>
   </header>
@@ -94,13 +101,16 @@
   <!-- Custom scripts for this template -->
   <script src="js/new-age.min.js"></script>
   <script>
+
+  </script>
+  <script>
     Vue.component('supply-request', {
       props: ['request'],
       template:
       `
-      <a :href="'request.html?request_id=' + request.id">
-      <div class="card" style="width: 18rem; margin-bottom: 2em;">
-        <img class="card-img-top" :src="request.img" alt="Card image cap"/>
+      
+      <div class="card" style="width: 18rem; margin-bottom: 2em;" >
+        <img class="card-img-top" :src="request.img" alt="Card image cap">
         <div class="card-body">
           <h3 class="card-title">{{request.title}}</h5>
           <p class="card-text">{{request.description}}
@@ -111,25 +121,27 @@
           </p>
         </div>
       </div>
-      </a>
       `
 
     })
     const vueApp = new Vue({
       el: '#app',
       data: { 
-      heading: 'Request Gallery',
-      requests: [
-      { id: 423232, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
-      { id: 323222, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
-      { id: 253222, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  },
-      { id: 237222, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
-      { id: 239222, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
-      { id: 232022, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  },
-      { id: 232282, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
-      { id: 232225, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
-      { id: 232422, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  }
-      ]
+      heading: 'hello',
+      request: 
+      { id: 423232, 
+        title: 'Surgery Masks', 
+        description: 'Masks necessary for healthy health health healing.', 
+        hospital: 'Sacred Heart Hospital', 
+        funding: '30', 
+        img: 'img/facemask.jpg'}
+      },
+      created: function(){
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString)
+        console.log(urlParams)
+        const request_id = urlParams.get('request_id')
+        this.heading = request_id
       },
       methods: {
 
