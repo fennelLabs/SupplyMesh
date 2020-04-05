@@ -107,10 +107,10 @@ contract SupplyMesh {
     uint max_key;
 
     // Place a bid on a particular bounty
-    function placeBidOnBounty(uint key) public returns (bool) {
+    function placeBidOnBounty(uint key, uint price) public returns (bool) {
         IndexValue memory bountyEntry = data.iterate_get(key);
-        if (!bountyEntry.claimed && !bountyEntry.accepted) {
-            data.insert(max_key, bountyEntry.price, bountyEntry.poster, msg.sender, bountyEntry.lowest_bidder, bountyEntry.description, true, bountyEntry.accepted, bountyEntry.paid);
+        if (!bountyEntry.claimed && !bountyEntry.accepted && (price >=  bountyEntry.price)) {
+            data.insert(max_key, price, bountyEntry.poster, msg.sender, bountyEntry.lowest_bidder, bountyEntry.description, true, bountyEntry.accepted, bountyEntry.paid);
             return true;
         } else return false;
     }
