@@ -10,6 +10,8 @@
 
   <title>SupplyMesh</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@2.0.0"></script>
+  <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,6 +28,9 @@
   <!-- Custom styles for this template -->
   <link href="css/new-age.min.css" rel="stylesheet">
 
+  <script src="js/store/index.js"></script>
+  <script src="js/store/state.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -33,8 +38,10 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="./" style ="font-size: 45px">SupplyMesh</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand js-scroll-trigger" href="./" style="font-size: 45px">SupplyMesh</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -54,17 +61,14 @@
     </div>
   </nav>
 
-  <hello-metamask></hello-metamask>
-
-  <header class="masthead"  style="padding-top: 75px; height: auto;">
+  <header class="masthead" style="padding-top: 75px; height: auto;">
     <div class="container text-dark rounded-top" style="background-color: RGBA(248, 249, 250, .8);" id="app">
+      <div class="d-flex flex-wrap justify-content-around">
+        <hello-metamask></hello-metamask>
+      </div>
       <h1 style="padding-top: .3em;">{{heading}}</h1>
       <div class="d-flex flex-wrap justify-content-around">
-        <supply-request
-        v-for="request in requests"
-        v-bind:key="request.id"
-        v-bind:request="request"
-        ></supply-request>
+        <supply-request v-for="request in requests" v-bind:key="request.id" v-bind:request="request"></supply-request>
       </div>
     </div>
   </header>
@@ -95,16 +99,17 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/new-age.min.js"></script>
+  <script src="js/constants/networks.js"></script>
   <script>
     Vue.component('hello-metamask', {
       template:
-      `
+        `
         <div class='metamask-info'>
           <p v-if="isInjected" id="has-metamask"><i aria-hidden="true" class="fa fa-check"></i> Metamask installed</p>
           <p v-else id="no-metamask"><i aria-hidden="true" class="fa fa-times"></i> Metamask not found</p>
-          <p>Network: {{ network }}</p>
-          <p>Account: {{ coinbase }}</p>
-          <p>Balance: {{ balance }} Wei // {{ ethBalance }} Eth</p>
+          <div>Network: {{ network }}</div>
+          <div>Account: {{ coinbase }}</div>
+          <div>Balance: {{ balance }} Wei // {{ ethBalance }} Eth</div>
         </div>
       `
     })
@@ -112,7 +117,7 @@
     Vue.component('supply-request', {
       props: ['request'],
       template:
-      `
+        `
       <a :href="'request.html?request_id=' + request.id">
       <div class="card" style="width: 18rem; margin-bottom: 2em;">
         <img class="card-img-top" :src="request.img" alt="Card image cap"/>
@@ -129,38 +134,41 @@
       </a>
       `
     })
+
     const vueApp = new Vue({
       el: '#app',
+      store,
       data: {
-      web3: null,
-      heading: 'Request Gallery',
-      requests: [
-      { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
-      { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
-      { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  },
-      { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
-      { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
-      { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  },
-      { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
-      { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
-      { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  }
-      ]
+        web3: null,
+        heading: 'Request Gallery',
+        requests: [
+          { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg' },
+          { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
+          { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg' },
+          { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg' },
+          { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
+          { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg' },
+          { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg' },
+          { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
+          { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg' }
+        ]
       },
       methods: {
 
       },
-      created: function() {
-          import {NETWORKS} from '../js/constants/networks'
-          import {mapState} from 'vuex'
-          if (typeof web3 !== 'undefined') {
-              var web3Provider = web3.currentProvider;
-              this.web3 = new Web3(web3.currentProvider);
-          } else {
-              var web3Provider = new web3.providers.HttpProvider('http://127.0.0.1:7545');
-              this.web3 = new Web3(App.web3Provider);
-          }
+      beforeCreate() {
+        this.$store.dispatch('registerWeb3')
       },
-      computed: mapState({
+      created: function () {
+        if (typeof web3 !== 'undefined') {
+          var web3Provider = web3.currentProvider;
+          this.web3 = new Web3(web3.currentProvider);
+        } else {
+          var web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
+          this.web3 = new Web3(web3Provider);
+        }
+      },
+      computed: Vuex.mapState({
         isInjected: state => state.web3.isInjected,
         network: state => NETWORKS[state.web3.networkId],
         coinbase: state => state.web3.coinbase,

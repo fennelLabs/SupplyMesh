@@ -34,7 +34,9 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="./" style="font-size: 45px">SupplyMesh</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -55,14 +57,10 @@
   </nav>
 
 
-  <header class="masthead"  style="padding-top: 75px;">
+  <header class="masthead" style="padding-top: 75px;">
     <div class="container h-100 text-dark" style="background-color: RGBA(248, 249, 250, .8);" id="app">
       <h1>{{heading}} </h1>
-      <supply-request
-      v-for="request in requests"
-      v-bind:key="request.id"
-      v-bind:request="request"
-    ></supply-request>
+      <supply-request v-for="request in requests" v-bind:key="request.id" v-bind:request="request"></supply-request>
     </div>
   </header>
 
@@ -96,7 +94,7 @@
     Vue.component('supply-request', {
       props: ['request'],
       template:
-      `
+        `
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="{{request.img}}" alt="Card image cap">
         <div class="card-body">
@@ -115,12 +113,12 @@
     const vueApp = new Vue({
       el: '#app',
       data: {
-      heading: 'Request Gallery',
-      requests: [
-      { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg'},
-      { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
-      { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg'  }
-      ]
+        heading: 'Request Gallery',
+        requests: [
+          { id: 1, title: 'Surgery Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Sacred Heart Hospital', funding: '30', img: 'img/facemask.jpg' },
+          { id: 2, title: 'Medical Masks', description: 'Masks necessary for healthy health health healing.', hospital: 'Our Lady of Perpetual Funding Hospital', funding: '23', img: 'img/facemask.jpg' },
+          { id: 3, title: 'Ventilators', description: 'Ventilators necessary for breathy breath breath breathing.', hospital: 'Copenhagen MD', funding: '64000', img: 'img/facemask.jpg' }
+        ]
       },
       methods: {
 

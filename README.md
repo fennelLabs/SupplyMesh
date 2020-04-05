@@ -1,43 +1,45 @@
 # SupplyMesh
 A blockchain-based supply chain bounty system.
 
-## Inspiration
-The COVID-19 pandemic has highlighted the limitations our healthcare system's traditional supply chains have faced when dealing with unprecedented demand for medical supplies. 
- 
-Scaling from {insert mask or ventilator numbers} to {#} is an exacting task, and one that traditional supply chains and medical supply manufacturers simply cannot accomplish fast enough. Instead we see various companies like Foxconn, LVMH, and numerous smaller manufacturers shifting production away from their original focuses of electronics and perfumes to focus on producing the medical supplies we so desperately need right now.
+## Why?
+The worldwide COVID-19 crisis has highlighted the limitations our healthcare system's traditional supply chains have faced when dealing with unprecedented demand for medical supplies. 
 
-Simultaneously we see individuals throughout communities both shocked by the trials and demands that hospitals are facing, and galvanized to help.
+According to the analytics firm Global Data, the world needs to manufacture 880,000 more ventilators to meet global demand. If these ventilators are not produced, then millions of people could die. It is an impossible task for traditional medical supply chains and manufacturers to meet such a great demand in such a short time frame. 
 
-SupplyMesh offers a solution that brings together the hospitals that need supplies, vendors that are manufacturing medical supplies, and individuals who are invested in financially supporting healthcare providers.
+In an attempt to meet this great manufacturing demand, we see companies like Foxconn, LVMH, and numerous smaller manufacturers repurpose their production infrastructure. Instead of producing electronics or perfumes, these companies are producing the medical supplies our world so desperately needs right now.
+Right now, we are observing a global disaster of an uncertain outcome. We do know our lives will be changed forever. We are shocked when we witness our healthcare system malfunction trying to cope with the surges of infected people. Isolated in our homes, we witness mass human mortality and suffering. We see the fear of sick patients, the mourning of friends and families of the deceased, and the anguish of medical professionals who lack the equipment they need. But, we will not stand by as helpless observers of worldwide tragedy. We are galvanized to help.
 
-## What it does
+SupplyMesh offers a solution that brings vital supplies to our medical professionals fighting COVID-19. SupplyMesh harmonizes healthcare organizations needing medical supplies, vendors manufacturing medical supplies, and individuals who want to financially support our medical professionals.
+
+## What?
 SupplyMesh creates a marketplace where hospitals can publicly post requests for the supplies they need.
-
 Vendors can then make bids to fulfill these supply requests, competing with each other on price and allowing the hospitals to choose among competing bids.
 
 Individuals can browse requests and participate in crowdfunding them.
 
-The transparent and imutable nature of the blockchain presents a unique ability to trace the entire history of any vendor, allowing hospitals to determine whether or not they should accept a bid. 
+The transparent and immutable nature of the blockchain gives healthcare organizations the unique ability to trace the entire transaction history of any vendor. This ensures there is trust in the marketplace. Hospitals can quickly and accurately determine whether a vendor is trustworthy without needing cumbersome or slow-moving intermediaries. This allows the hospital to receive a fair market-place for medical supplies, and also cultivates ethical market behavior among vendors.
 
-## How we built it
+## How?
 SupplyMesh is a Decentralized Application.
 
-The back end code for SupplyMesh runs on Ethereum.  The smart contract that defines the logic behind SupplyMesh is written in Solidity, a language designed for writing applications that take advantage of the natural decentralized features of Ethereum.
+The back end code for SupplyMesh runs on Ethereum. The smart contract that defines the logic behind SupplyMesh is written in Solidity, a language designed for writing applications that take advantage of the natural decentralized features of Ethereum.
 
-The front end webpage for SupplyMesh is currently hosted serverlessly on Microsoft's Azure cloud platform to support HTTP-based access from all modern web browsers.
+The front end web page for SupplyMesh is currently hosted serverlessly on Microsoft's Azure cloud platform to support HTTP-based access from all modern web browsers.
 
-## Challenges we ran into
+## Our Challenges?
 Ethereum has changed quite a lot since the majority of us last worked with it - there was a bit of a learning curve to getting adapted to the new changes in the web3 libraries powering Ethereum.
 
 Working out which web frameworks would adequately support web3 and Metamask took a bit of time - we expected to use React for our frontend and a framework called Drizzle for interacting with Ethereum, but it turned out that Vue.js was more familiar to several of our developers and had perfectly adequate support for web3 libraries out of the box.
 
 ## Accomplishments that we're proud of
-Blockchain-based Dapps have become increasingly popular in the last few years, but are a fairly young and at times untested technology. The fact that we were able to design, develop, and roll out the application we ended up with in a single weekend is no small feat.
+Blockchain-based Dapps have become increasingly popular in the last few years, but are a fairly young and at times untested technology. We are proud of the fact that it took us only a weekend to design, develop, and roll out our application.
 
 ## What we learned
-* Several of us took a serious look at Solidity and Ethereum app development for the first time.
+Some of us learned about the new developments in Ethereum’s technology. Some of us gained some insight into Solidity and Ethereum app development for the first time.
 
 ## What's next for Supply Mesh
-We'd like to host this as a fully self-sufficient application, independent of any kind of cloud or server hosting, on something like IPFS or Filecoin. We'd also like to add support for some of the other Dapp platforms and chains that have emerged beside Ethereum.
+We would like to host this as an entirely self-sufficient application, independent of any kind of cloud or server hosting. We would like to host this on something like the Inter-Planetary FileSystem (IPFS) or Filecoin. We'd also like to add support for some of the other Dapp platforms and chains that have emerged beside Ethereum.
 
 In terms of financial functionality, we'd like to add features that can more fully lock down funds transferred from donors to ensure that the money they've contributed is used for its intended purpose; we'd even like to add optional functions to allow donors to transfer money to a hospital to be used in future crowdfunding efforts.
+
+
