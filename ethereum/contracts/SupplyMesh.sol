@@ -14,7 +14,7 @@ struct IndexValue {
     uint balance;
 
     // the address that asked for the bounty
-    address poster;
+    address payable poster;
 
     // what the bounty is looking for
     string description;
@@ -91,7 +91,7 @@ library IterableMapping {
         address payable lowest_bidder = self.data[key].lowest_bidder;
         address payable next_lowest_bidder = self.data[key].next_lowest_bidder;
         uint balance = self.data[key].balance;
-        address poster = self.data[key].poster;
+        address payable poster = self.data[key].poster;
         string memory description = self.data[key].description;
         bool claimed = self.data[key].claimed;
         bool accepted = self.data[key].accepted;
@@ -152,15 +152,15 @@ contract SupplyMesh {
 
     // Another individual can foot the bill for someone else's bounty
     // Takes an entity address and a volume of Ether as arguments
-    function fundBountyForEntity(address payable poster, uint volume, uint key) public payable returns (bool) {
+    function fundBountyForEntity(uint volume, uint key) public payable returns (bool) {
         IndexValue memory bountyEntry = data.iterate_get(key);
         if (bountyEntry.paid) {
             if (bountyEntry.balance + volume > bountyEntry.price) {
-                poster.transfer((bountyEntry.balance + volume) - bountyEntry.price);
+                bountyEntry.poster.transfer((bountyEntry.balance + volume) - bountyEntry.price);
                 data.insert(max_key, bountyEntry.price, bountyEntry.lowest_bidder, bountyEntry.next_lowest_bidder, bountyEntry.description, bountyEntry.claimed, bountyEntry.accepted, true);
                 return true;
             } else {
-                poster.transfer(volume);
+                bountyEntry.poster.transfer(volume);
                 return true;
             }
         } else return false;
