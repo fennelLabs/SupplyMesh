@@ -17,7 +17,7 @@ Vendors can then make bids to fulfill these supply requests, competing with each
 
 Individuals can browse requests and participate in crowdfunding them.
 
-The hospital can view the entire history of a vendor's interactions.
+The transparent and imutable nature of the blockchain presents a unique ability to trace the entire history of any vendor, allowing hospitals to determine whether or not they should accept a bid. 
 
 ## How we built it
 SupplyMesh is a Decentralized Application.
@@ -38,3 +38,6 @@ Blockchain-based Dapps have become increasingly popular in the last few years, b
 * Several of us took a serious look at Solidity and Ethereum app development for the first time.
 
 ## What's next for Supply Mesh
+We'd like to host this as a fully self-sufficient application, independent of any kind of cloud or server hosting, on something like IPFS or Filecoin. We'd also like to add support for some of the other Dapp platforms and chains that have emerged beside Ethereum.
+
+In terms of financial functionality, we'd like to add features that can more fully lock down funds transferred from donors to ensure that the money they've contributed is used for its intended purpose; we'd even like to add optional functions to allow donors to transfer money to a hospital to be used in future crowdfunding efforts.
