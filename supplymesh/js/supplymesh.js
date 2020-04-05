@@ -15,7 +15,7 @@ Vue.component('SupplyMesh', {
 				from: this.$store.state.web3.coinbase
 			}, function(err, result) {
 				if (err) {
-
+					alert("error")
 				} else {
 
 				}
@@ -98,7 +98,6 @@ Vue.component('SupplyMesh', {
 		}
 	}
 })
-
 
 /*
  * NEEDED IN REQUESTS.HTML
