@@ -97,9 +97,12 @@
   })
   const vueApp = new Vue({
     el: '#app',
-    data: { 
-     display: 'redbox',
-     heading: 'Request Gallery'
+    data: {
+	    amount: null,
+      pending: false,
+      winEvent: null
+      display: 'redbox',
+      heading: 'Request Gallery'
     },
     methods: {
       toggleBox() {
