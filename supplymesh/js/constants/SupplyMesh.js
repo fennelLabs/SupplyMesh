@@ -1,5 +1,5 @@
-const address = '0x9E5662bEBd2102Ff803f0bf5D4a9F00b49C2C671'
-const ABI = [
+var address = '0x9E5662bEBd2102Ff803f0bf5D4a9F00b49C2C671'
+var ABI = [
 	{
 		"contractName": "SupplyMesh",
 		"abi": [
@@ -20430,5 +20430,3 @@ const ABI = [
 		}
 	}
 ]
-
-export { address, ABI }

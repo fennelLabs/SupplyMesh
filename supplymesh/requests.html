@@ -30,7 +30,10 @@
 
   <script src="js/store/index.js"></script>
   <script src="js/store/state.js"></script>
-
+  <script src="js/getWeb3.js"></script>
+  <script src="js/pollWeb3.js"</script>
+  <script src="js/getContract.js"></script>
+  <script src="js/constants/SupplyMesh.js"></script>
 </head>
 
 <body id="page-top">
@@ -99,11 +102,13 @@
   <script src="js/constants/networks.js"></script>
   <script>
     Vue.component('hello-metamask', {
+      props: ['web3'],
       template:
         `
         <div class='metamask-info'>
           <p v-if="isInjected" id="has-metamask"><i aria-hidden="true" class="fa fa-check"></i> Metamask installed</p>
           <p v-else id="no-metamask"><i aria-hidden="true" class="fa fa-times"></i> Metamask not found</p>
+	  <div>WORKS???: {{ web3.eth.getCodeAt("0x9E5662bEBd2102Ff803f0bf5D4a9F00b49C2C671").then(console.log) }} </div>
           <div>Network: {{ network }}</div>
           <div>Account: {{ coinbase }}</div>
           <div>Balance: {{ balance }} Wei // {{ ethBalance }} Eth</div>
