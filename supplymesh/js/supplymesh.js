@@ -105,7 +105,7 @@ Vue.component('SupplyMesh', {
 
 componentWillMount() {
 	const web3 = new Web3(
-		new Web3.providers.HttpsProvider('https://mainnet.infura.io')
+  		new Web3.providers.WebsocketProvider("https://ropsten.infura.io/v3/691aca45f1b448df92e1a968c1fe9e04")
 	);
 	web3.eth.getStorageAt(...).then(...)
 	web3.eth.getBlock('latest').then(console.log)
