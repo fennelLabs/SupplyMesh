@@ -23,3 +23,5 @@ ethereum/build
 landing-page/package-lock.json
 supplymesh/js/new-age.min.js
 supplymesh/js/supplymesh.min.js
+ethereum/node_modules
+ethereum/package-lock.json
