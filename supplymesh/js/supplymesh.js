@@ -97,7 +97,7 @@ Vue.component('SupplyMesh', {
 			})
 		}
 	},
-	mounted () {
+	mounted: function() {
 	  console.log('dispatching getContractInstance')
 	  this.$store.dispatch('getContractInstance')
 	}
