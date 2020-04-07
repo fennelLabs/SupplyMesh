@@ -56,19 +56,16 @@
 
   <header class="masthead"  style="padding-top: 75px; height: auto;">
     <div class="container text-dark rounded-top" style="background-color: RGBA(248, 249, 250, .8);" id="app">
-      <h1 style="padding-top: .3em;">Request #{{heading}} </h1>
-      <div class="d-flex flex-wrap justify-content-around">
-        <div class="card" style="width: auto; margin-bottom: 2em;" >
-        <img class="card-img-top" :src="request.img" alt="Card image cap">
-            <div class="card-body">
-                <h3 class="card-title">{{request.title}}</h5>
-                <p class="card-text">{{request.description}}
-                <br>
-                <span class="text-muted">{{request.hospital}}</span>
-                <br>
-                <span class="card-text text-success">$ {{request.funding}} raised</span>
-                </p>
-            </div>
+      <h1 class="text-center" style="padding-top: .3em;">{{request.title}} </h1>
+      <p class="text-center">{{request.description}}</p>
+      <div class="row">
+        <img class="card-img-top col-7" :src="request.img" alt="Card image cap">
+        <div class="col-5">
+          <div class="bg-white">
+            <div class="text-success h1">$ {{request.funding}} raised</div>           
+            <button type="button" class="btn btn-success btn-block">Donate Towards this Request</button>
+            <button type="button" class="btn btn-warning btn-block">Place a Fulfillment Bid</button>
+          </div>
         </div>
       </div>
     </div>
@@ -104,26 +101,6 @@
 
   </script>
   <script>
-    Vue.component('supply-request', {
-      props: ['request'],
-      template:
-      `
-      
-      <div class="card" style="width: 18rem; margin-bottom: 2em;" >
-        <img class="card-img-top" :src="request.img" alt="Card image cap">
-        <div class="card-body">
-          <h3 class="card-title">{{request.title}}</h5>
-          <p class="card-text">{{request.description}}
-            <br>
-            <span class="text-muted">{{request.hospital}}</span>
-            <br>
-            <span class="card-text text-success">$ {{request.funding}} raised</span>
-          </p>
-        </div>
-      </div>
-      `
-
-    })
     const vueApp = new Vue({
       el: '#app',
       data: { 
