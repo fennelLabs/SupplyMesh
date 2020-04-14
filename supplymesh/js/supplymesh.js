@@ -1,106 +1,135 @@
+import Vue from 'vue'
+
 Vue.component('SupplyMesh', {
-	props: {
-		amount: null,
-		pending: false,
-		winEvent: null,
-	},
-	template: "<div></div>",
-	methods: {
-		placeBid: function(event) {
-			this.winEvent = null
-			this.pending = true
-			this.$store.state.contractInstance().placeBidOnBounty(event.target.innerHTML, {
-				gas: 300000,
-				value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-				from: this.$store.state.web3.coinbase
-			}, function(err, result) {
-				if (err) {
-					alert("error")
-				} else {
-
-				}
-			})
-		},
-		acceptBid: function(event) {
-			this.winEvent = null
-			this.pending = true
-			this.$store.state.contractInstance().acceptBidOnBounty(event.target.innerHTML, {
-				gas: 300000,
-				value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-				from: this.$store.state.web3.coinbase
-			}, function(err, result) {
-				if (err) {
-
-				} else {
-
-				}
-			})
-		},
-		rejectBid: function(event) {
-			this.winEvent = null
-			this.pending = true
-			this.$store.state.contractInstance().rejectBidOnBounty(event.target.innerHTML, {
-				gas: 300000,
-				value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-				from: this.$store.state.web3.coinbase
-			}, function(err, result) {
-				if (err) {
-
-				} else {
-
-				}
-			})
-		},
-		addBounty: function(event) {
-			this.winEvent = null
-			this.pending = true
-			this.$store.state.contractInstance().addBountyForEntity(event.target.innerHtml, event.target.innerHTML, {
-				gas: 300000,
-				value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-				from: this.$store.state.web3.coinbase
-			}, function(err, result) {
-				if (err) {
-
-				} else {
-
-				}
-			})
-		},
-		payBounty: function(event) {
-			this.winEvent = null
-			this.pending = true
-			this.$store.state.contractInstance().payBountyForEntity(event.target.innerHTML, {
-				gas: 300000,
-				value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-				from: this.$store.state.web3.coinbase
-			}, function(err, result) {
-				if (err) {
-
-				} else {
-
-				}
-			})
-		},
-		fundBounty: function(event) {
-			this.winEvent = null
-			this.pending = true
-			this.$store.state.contractInstance().fundBountyForEntity(event.target.innerHTML, event.target.innerHTML, {
-				gas: 300000,
-				value: this.$store.state.web3.web3Instance().toWei(this.amount, 'ether'),
-				from: this.$store.state.web3.coinbase
-			}, function(err, result) {
-				if (err) {
-
-				} else {
-
-				}
-			})
-		}
-	},
-	mounted: function() {
-	  console.log('dispatching getContractInstance')
-	  this.$store.dispatch('getContractInstance')
-	}
+  props: {
+    amount: null,
+    pending: false,
+    winEvent: null
+  },
+  mounted() {
+    console.log('dispatching getContractInstance')
+    this.$store.dispatch('getContractInstance')
+  },
+  methods: {
+    placeBid(event) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().placeBidOnBounty(
+        event.target.innerHTML,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+            alert('error')
+          } else {
+          }
+        }
+      )
+    },
+    acceptBid(event) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().acceptBidOnBounty(
+        event.target.innerHTML,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+          } else {
+          }
+        }
+      )
+    },
+    rejectBid(event) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().rejectBidOnBounty(
+        event.target.innerHTML,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+          } else {
+          }
+        }
+      )
+    },
+    addBounty(event) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().addBountyForEntity(
+        event.target.innerHtml,
+        event.target.innerHTML,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+          } else {
+          }
+        }
+      )
+    },
+    payBounty(event) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().payBountyForEntity(
+        event.target.innerHTML,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+          } else {
+          }
+        }
+      )
+    },
+    fundBounty(event) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().fundBountyForEntity(
+        event.target.innerHTML,
+        event.target.innerHTML,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+          } else {
+          }
+        }
+      )
+    }
+  },
+  template: '<div></div>'
 })
 
 /*

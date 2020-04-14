@@ -1,11 +1,11 @@
-var pollWeb3 = function (state) {
+const pollWeb3 = function(state) {
   web3 = new Web3(state.web3.currentProvider)
 
   setInterval(function() {
     if (web3 && store.state.web3.web3Instance) {
       if (web3.eth.coinbase !== store.state.web3.coinbase) {
-        var newCoinbase = web3.eth.coinbase;
-        web3.eth.getBalance(web3.eth.coinbase, function (err, newBalance) {
+        const newCoinbase = web3.eth.coinbase
+        web3.eth.getBalance(web3.eth.coinbase, function(err, newBalance) {
           if (err) {
             console.log(err)
           } else {
@@ -16,7 +16,10 @@ var pollWeb3 = function (state) {
           }
         })
       } else {
-        web3.eth.getBalance(store.state.web3.coinbase, function (err, polledBalance) {
+        web3.eth.getBalance(store.state.web3.coinbase, function(
+          err,
+          polledBalance
+        ) {
           if (err) {
             console.log(err)
           } else if (parseInt(polledBalance, 10) !== store.state.web3.balance) {
@@ -30,4 +33,3 @@ var pollWeb3 = function (state) {
     }
   }, 500)
 }
-
