@@ -41,5 +41,3 @@ Some of us learned about the new developments in Ethereum’s technology. Some o
 We would like to host this as an entirely self-sufficient application, independent of any kind of cloud or server hosting. We would like to host this on something like the Inter-Planetary FileSystem (IPFS) or Filecoin. We'd also like to add support for some of the other Dapp platforms and chains that have emerged beside Ethereum.
 
 In terms of financial functionality, we'd like to add features that can more fully lock down funds transferred from donors to ensure that the money they've contributed is used for its intended purpose; we'd even like to add optional functions to allow donors to transfer money to a hospital to be used in future crowdfunding efforts.
-
-
