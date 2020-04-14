@@ -1,4 +1,5 @@
-const NETWORKS = {
+export default {
+NETWORKS : {
     '1': 'Main Net',
     '2': 'Deprecated Morden test network',
     '3': 'Ropsten test network',
@@ -7,3 +8,4 @@ const NETWORKS = {
     '4447': 'Truffle Develop Network',
     '5777': 'Ganache Blockchain'
   }
+}

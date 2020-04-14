@@ -1,13 +1,13 @@
 <template>
-  <hello-metamask />
+  <hello-supplymesh />
 </template>
 <script>
-import HelloMetamask from '~/components/web3/hello-metamask'
+import HelloSupplyMesh from '~/components/web3/hello-supplymesh'
 
 export default {
-  name: 'Web3',
+  name: 'Supplymesh',
   components: {
-    'hello-metamask': HelloMetamask
+    'hello-supplymesh': HelloSupplyMesh
   },
   beforeCreate() {
     this.$store.dispatch('web3/registerWeb3')
