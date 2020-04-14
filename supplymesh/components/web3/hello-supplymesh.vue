@@ -18,10 +18,7 @@ import supplymesh from '~/assets/js/supplymesh'
 export default {
   data() {
     return {
-      title: 'SupplyMesh',
-      accounts: [],
-      userAccount: '',
-      userAddress: '0x878804cD0324Ca2c6F9469e64F0eC24B5e94df3e'
+      title: 'SupplyMesh'
     }
   },
   computed: {
