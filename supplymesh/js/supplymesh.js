@@ -11,11 +11,10 @@ Vue.component('SupplyMesh', {
     this.$store.dispatch('getContractInstance')
   },
   methods: {
-    placeBid(event) {
+    getAllRequests() {
       this.winEvent = null
       this.pending = true
-      this.$store.state.contractInstance().placeBidOnBounty(
-        event.target.innerHTML,
+      this.$store.state.contractInstance().getAllRequests(
         {
           gas: 300000,
           value: this.$store.state.web3
@@ -31,11 +30,52 @@ Vue.component('SupplyMesh', {
         }
       )
     },
-    acceptBid(event) {
+    getRequestByKey(key) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().getSingleRequestByKey(
+        key,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+            alert('error')
+          } else {
+          }
+        }
+      )
+    },
+    placeBid(key, price) {
+      this.winEvent = null
+      this.pending = true
+      this.$store.state.contractInstance().placeBidOnBounty(
+        key,
+        price,
+        {
+          gas: 300000,
+          value: this.$store.state.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.coinbase
+        },
+        function(err, result) {
+          if (err) {
+            alert('error')
+          } else {
+          }
+        }
+      )
+    },
+    acceptBid(key) {
       this.winEvent = null
       this.pending = true
       this.$store.state.contractInstance().acceptBidOnBounty(
-        event.target.innerHTML,
+        key,
         {
           gas: 300000,
           value: this.$store.state.web3
@@ -50,11 +90,11 @@ Vue.component('SupplyMesh', {
         }
       )
     },
-    rejectBid(event) {
+    rejectBid(key) {
       this.winEvent = null
       this.pending = true
       this.$store.state.contractInstance().rejectBidOnBounty(
-        event.target.innerHTML,
+        key,
         {
           gas: 300000,
           value: this.$store.state.web3
@@ -69,12 +109,13 @@ Vue.component('SupplyMesh', {
         }
       )
     },
-    addBounty(event) {
+    addBounty(price, title, description) {
       this.winEvent = null
       this.pending = true
       this.$store.state.contractInstance().addBountyForEntity(
-        event.target.innerHtml,
-        event.target.innerHTML,
+        price,
+        title,
+        description,
         {
           gas: 300000,
           value: this.$store.state.web3
@@ -89,11 +130,11 @@ Vue.component('SupplyMesh', {
         }
       )
     },
-    payBounty(event) {
+    payBounty(key) {
       this.winEvent = null
       this.pending = true
       this.$store.state.contractInstance().payBountyForEntity(
-        event.target.innerHTML,
+        key,
         {
           gas: 300000,
           value: this.$store.state.web3
@@ -108,12 +149,12 @@ Vue.component('SupplyMesh', {
         }
       )
     },
-    fundBounty(event) {
+    fundBounty(volume, key) {
       this.winEvent = null
       this.pending = true
       this.$store.state.contractInstance().fundBountyForEntity(
-        event.target.innerHTML,
-        event.target.innerHTML,
+        volume,
+        key,
         {
           gas: 300000,
           value: this.$store.state.web3
