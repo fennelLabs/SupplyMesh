@@ -22,7 +22,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
             alert('error')
           } else {
@@ -42,7 +42,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
             alert('error')
           } else {
@@ -63,7 +63,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
             alert('error')
           } else {
@@ -83,7 +83,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
           } else {
           }
@@ -102,7 +102,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
           } else {
           }
@@ -123,7 +123,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
           } else {
           }
@@ -142,7 +142,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
           } else {
           }
@@ -162,7 +162,7 @@ Vue.component('SupplyMesh', {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.coinbase
         },
-        function(err, result) {
+        function (err, result) {
           if (err) {
           } else {
           }
