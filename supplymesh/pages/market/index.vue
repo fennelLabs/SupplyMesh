@@ -18,8 +18,10 @@
 </template>
 
 <script>
+import NETWORKS from '~/assets/js/network'
+// eslint-disable-next-line
+import supplymesh from '~/assets/js/supplymesh'
 import Market from '~/components/market_page/Market.vue'
-
 export default {
   name: 'SupplyMeshMarket',
   components: {
@@ -108,7 +110,35 @@ export default {
       ]
     }
   },
-  methods: {},
+  computed: {
+    isInjected() {
+      return this.$store.state.web3.web3.isInjected
+    },
+    network() {
+      return NETWORKS.NETWORKS[this.$store.state.web3.web3.networkId]
+    },
+    coinbase() {
+      return this.$store.state.web3.web3.coinbase
+    },
+    balance() {
+      return this.$store.state.web3.web3.balance
+    },
+    ethBalance() {
+      if (this.$store.state.web3.web3.web3Instance !== null)
+        return this.$store.state.web3.web3
+          .web3Instance()
+          .utils.fromWei(
+            this.$store.state.web3.web3.balance.toString(),
+            'ether'
+          )
+      return 0
+    }
+  },
+  mounted() {
+    // eslint-disable-next-line
+    console.log('dispatching getContractInstance')
+    this.$store.dispatch('web3/getContractInstance')
+  },
   head() {
     return {
       title: this.title
@@ -116,3 +146,14 @@ export default {
   }
 }
 </script>
+<style scoped>
+.metamask-info {
+  text-align: center;
+}
+#has-metamask {
+  color: green;
+}
+#no-metamask {
+  color: red;
+}
+</style>

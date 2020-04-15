@@ -109,6 +109,22 @@ contract SupplyMesh {
 
     uint max_key;
 
+    function getAllRequests() public view returns (string memory) {
+        string memory request_list;
+        for (uint i = data.iterate_start(); data.iterate_valid(i); i = data.iterate_next(i)) {
+            request_list = strConcat(request_list, getSingleRequestByKey(i), " ");
+        }
+        return request_list;
+    }
+
+    function getSingleRequestByKey(uint key) public view returns (string memory) {
+        return serializeRequestObject(data.iterate_get(key));
+    }
+
+    function serializeRequestObject(IndexValue memory value) internal view returns (string memory) {
+
+    }
+
     // Place a bid on a particular bounty
     function placeBidOnBounty(uint key, uint price) public returns (bool) {
         IndexValue memory bountyEntry = data.iterate_get(key);
@@ -167,5 +183,18 @@ contract SupplyMesh {
                 return true;
             }
         } else return false;
+    }
+
+    function strConcat(string memory _a, string memory _b, string memory _c) internal pure returns (string memory){
+        bytes memory _ba = bytes(_a);
+        bytes memory _bb = bytes(_b);
+        bytes memory _bc = bytes(_c);
+        string memory abc = new string(_ba.length + _bb.length + _bc.length);
+        bytes memory babcde = bytes(abc);
+        uint k = 0;
+        for (uint i = 0; i < _ba.length; i++) babcde[k++] = _ba[i];
+        for (uint i = 0; i < _bb.length; i++) babcde[k++] = _bb[i];
+        for (uint i = 0; i < _bc.length; i++) babcde[k++] = _bc[i];
+        return string(babcde);
     }
 }
