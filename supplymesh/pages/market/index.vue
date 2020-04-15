@@ -22,6 +22,10 @@ import NETWORKS from '~/assets/js/network'
 // eslint-disable-next-line
 import supplymesh from '~/assets/js/supplymesh'
 import Market from '~/components/market_page/Market.vue'
+
+// Need to retrieve request list properly
+// var request_list = getAllRequests();
+
 export default {
   name: 'SupplyMeshMarket',
   components: {
@@ -31,83 +35,7 @@ export default {
     return {
       title: 'SupplyMesh - Market',
       heading: 'Request Market',
-      supplyRequests: [
-        {
-          id: 423232,
-          title: 'Surgery Masks',
-          description: 'Masks necessary for healthy health health healing.',
-          hospital: 'Sacred Heart Hospital',
-          funding: '30',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 323222,
-          title: 'Medical Masks',
-          description: 'Masks necessary for healthy health health healing.',
-          hospital: 'Our Lady of Perpetual Funding Hospital',
-          funding: '23',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 253222,
-          title: 'Ventilators',
-          description:
-            'Ventilators necessary for breathy breath breath breathing.',
-          hospital: 'Copenhagen MD',
-          funding: '64000',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 237222,
-          title: 'Surgery Masks',
-          description: 'Masks necessary for healthy health health healing.',
-          hospital: 'Sacred Heart Hospital',
-          funding: '30',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 239222,
-          title: 'Medical Masks',
-          description: 'Masks necessary for healthy health health healing.',
-          hospital: 'Our Lady of Perpetual Funding Hospital',
-          funding: '23',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 232022,
-          title: 'Ventilators',
-          description:
-            'Ventilators necessary for breathy breath breath breathing.',
-          hospital: 'Copenhagen MD',
-          funding: '64000',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 232282,
-          title: 'Surgery Masks',
-          description: 'Masks necessary for healthy health health healing.',
-          hospital: 'Sacred Heart Hospital',
-          funding: '30',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 232225,
-          title: 'Medical Masks',
-          description: 'Masks necessary for healthy health health healing.',
-          hospital: 'Our Lady of Perpetual Funding Hospital',
-          funding: '23',
-          img: '../img/facemask.jpg'
-        },
-        {
-          id: 232422,
-          title: 'Ventilators',
-          description:
-            'Ventilators necessary for breathy breath breath breathing.',
-          hospital: 'Copenhagen MD',
-          funding: '64000',
-          img: '../img/facemask.jpg'
-        }
-      ]
+      supplyRequests: request_list,
     }
   },
   computed: {
