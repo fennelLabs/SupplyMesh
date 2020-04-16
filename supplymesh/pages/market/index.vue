@@ -23,24 +23,22 @@ import NETWORKS from '~/assets/js/network'
 import supplymesh from '~/assets/js/supplymesh'
 import Market from '~/components/market_page/Market.vue'
 
-// Need to retrieve request list properly
-// var request_list = getAllRequests();
-
 export default {
   name: 'SupplyMeshMarket',
-  props: {
-    amount: null,
-    pending: false,
-    winEvent: null
-  },
   components: {
     Market
+  },
+  props: {
+    amount: null,
+    // eslint-disable-next-line
+    pending: false,
+    winEvent: null
   },
   data() {
     return {
       title: 'SupplyMesh - Market',
       heading: 'Request Market',
-      supplyRequests: request_list,
+      supplyRequests: this.getAllRequests()
     }
   },
   computed: {
@@ -71,7 +69,8 @@ export default {
     // eslint-disable-next-line
     console.log('dispatching getContractInstance')
     this.$store.dispatch('web3/getContractInstance')
-  },methods: {
+  },
+  methods: {
     getAllRequests() {
       this.winEvent = null
       this.pending = true
@@ -83,7 +82,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
             alert('error')
           } else {
@@ -103,7 +102,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
             alert('error')
           } else {
@@ -124,7 +123,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
             alert('error')
           } else {
@@ -144,7 +143,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
           } else {
           }
@@ -163,7 +162,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
           } else {
           }
@@ -184,7 +183,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
           } else {
           }
@@ -203,7 +202,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
           } else {
           }
@@ -223,13 +222,13 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         },
-        function (err, result) {
+        function(err, result) {
           if (err) {
           } else {
           }
         }
       )
-    },
+    }
   },
   head() {
     return {
