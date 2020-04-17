@@ -66,25 +66,32 @@ export default {
       return 0
     }
   },
-  mounted() {
+  created() {
     // eslint-disable-next-line
     console.log('dispatching getContractInstance')
     this.$store.dispatch('web3/getContractInstance')
+  },
+  mounted() {
     Vue.nextTick(function() {
       this.supplyRequests = this.getAllRequests()
     })
   },
   methods: {
     getAllRequests() {
+      // eslint-disable-next-line
+      console.log("Getting requests from Ethereum")
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.getAllRequests().call({
-        gas: 300000,
-        value: this.$store.state.web3.web3
-          .web3Instance()
-          .toWei(this.amount, 'ether'),
-        from: this.$store.state.web3.web3.coinbase
-      })
+      this.$store.state.web3.contractInstance.methods
+        .getAllRequests()
+        .call({
+          gas: 300000,
+          value: this.$store.state.web3.web3
+            .web3Instance()
+            .toWei(this.amount, 'ether'),
+          from: this.$store.state.web3.web3.coinbase
+        })
+        .then(console.log)
     },
     getRequestByKey(key) {
       this.winEvent = null
@@ -98,6 +105,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         })
+        .then(console.log)
     },
     placeBid(key, price) {
       this.winEvent = null
@@ -111,6 +119,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         })
+        .then(console.log)
     },
     acceptBid(key) {
       this.winEvent = null
@@ -124,6 +133,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         })
+        .then(console.log)
     },
     rejectBid(key) {
       this.winEvent = null
@@ -137,6 +147,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         })
+        .then(console.log)
     },
     addBounty(price, title, description) {
       this.winEvent = null
@@ -150,6 +161,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         })
+        .then(console.log)
     },
     payBounty(key) {
       this.winEvent = null
@@ -163,6 +175,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         })
+        .then(console.log)
     },
     fundBounty(volume, key) {
       this.winEvent = null
@@ -176,6 +189,7 @@ export default {
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
         })
+        .then(console.log)
     }
   },
   head() {
