@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import NETWORKS from '~/assets/js/network'
 // eslint-disable-next-line
 import supplymesh from '~/assets/js/supplymesh'
@@ -38,7 +39,7 @@ export default {
     return {
       title: 'SupplyMesh - Market',
       heading: 'Request Market',
-      supplyRequests: this.getAllRequests()
+      supplyRequests: null
     }
   },
   computed: {
@@ -69,165 +70,112 @@ export default {
     // eslint-disable-next-line
     console.log('dispatching getContractInstance')
     this.$store.dispatch('web3/getContractInstance')
+    Vue.nextTick(function() {
+      this.supplyRequests = this.getAllRequests()
+    })
   },
   methods: {
     getAllRequests() {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.getAllRequests(
-        {
-          gas: 300000,
-          value: this.$store.state.web3.web3
-            .web3Instance()
-            .toWei(this.amount, 'ether'),
-          from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-            alert('error')
-          } else {
-          }
-        }
-      )
+      this.$store.state.web3.contractInstance.methods.getAllRequests().call({
+        gas: 300000,
+        value: this.$store.state.web3.web3
+          .web3Instance()
+          .toWei(this.amount, 'ether'),
+        from: this.$store.state.web3.web3.coinbase
+      })
     },
     getRequestByKey(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.getSingleRequestByKey(
-        key,
-        {
+      this.$store.state.web3.contractInstance.methods
+        .getSingleRequestByKey(key)
+        .call({
           gas: 300000,
           value: this.$store.state.web3.web3
             .web3Instance()
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-            alert('error')
-          } else {
-          }
-        }
-      )
+        })
     },
     placeBid(key, price) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.placeBidOnBounty(
-        key,
-        price,
-        {
+      this.$store.state.web3.contractInstance.methods
+        .placeBidOnBounty(key, price)
+        .call({
           gas: 300000,
           value: this.$store.state.web3.web3
             .web3Instance()
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-            alert('error')
-          } else {
-          }
-        }
-      )
+        })
     },
     acceptBid(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.acceptBidOnBounty(
-        key,
-        {
+      this.$store.state.web3.contractInstance.methods
+        .acceptBidOnBounty(key)
+        .call({
           gas: 300000,
           value: this.$store.state.web3.web3
             .web3Instance()
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-          } else {
-          }
-        }
-      )
+        })
     },
     rejectBid(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.rejectBidOnBounty(
-        key,
-        {
+      this.$store.state.web3.contractInstance.methods
+        .rejectBidOnBounty(key)
+        .call({
           gas: 300000,
           value: this.$store.state.web3.web3
             .web3Instance()
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-          } else {
-          }
-        }
-      )
+        })
     },
     addBounty(price, title, description) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.addBountyForEntity(
-        price,
-        title,
-        description,
-        {
+      this.$store.state.web3.contractInstance.methods
+        .addBountyForEntity(price, title, description)
+        .call({
           gas: 300000,
           value: this.$store.state.web3.web3
             .web3Instance()
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-          } else {
-          }
-        }
-      )
+        })
     },
     payBounty(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.payBountyForEntity(
-        key,
-        {
+      this.$store.state.web3.contractInstance.methods
+        .payBountyForEntity(key)
+        .call({
           gas: 300000,
           value: this.$store.state.web3.web3
             .web3Instance()
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-          } else {
-          }
-        }
-      )
+        })
     },
     fundBounty(volume, key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.contractInstance.methods.fundBountyForEntity(
-        volume,
-        key,
-        {
+      this.$store.state.web3.contractInstance.methods
+        .fundBountyForEntity(volume, key)
+        .call({
           gas: 300000,
           value: this.$store.state.web3.web3
             .web3Instance()
             .toWei(this.amount, 'ether'),
           from: this.$store.state.web3.web3.coinbase
-        },
-        function(err, result) {
-          if (err) {
-          } else {
-          }
-        }
-      )
+        })
     }
   },
   head() {
