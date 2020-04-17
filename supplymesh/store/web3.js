@@ -33,7 +33,7 @@ export const mutations = {
     state.web3.balance = parseInt(payload.balance, 10)
   },
   registerContractInstance(state, payload) {
-    console.log('Casino contract instance: ', payload)
+    console.log('SupplyMesh contract instance: ', payload)
     state.contractInstance = () => payload
   }
 }
