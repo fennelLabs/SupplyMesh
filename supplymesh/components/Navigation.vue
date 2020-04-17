@@ -24,10 +24,14 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#features">Features</a>
+            <nuxt-link class="nav-link js-scroll-trigger" to="/setup"
+              >Setup</nuxt-link
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            <nuxt-link class="nav-link js-scroll-trigger" to="/request-supplies"
+              >Request Supplies</nuxt-link
+            >
           </li>
         </ul>
       </div>
