@@ -79,7 +79,7 @@ export default {
   methods: {
     getAllRequests() {
       // eslint-disable-next-line
-      console.log("Getting requests from Ethereum")
+      console.log('Getting requests from Ethereum')
       this.winEvent = null
       this.pending = true
       this.$store.state.web3.contractInstance.methods
