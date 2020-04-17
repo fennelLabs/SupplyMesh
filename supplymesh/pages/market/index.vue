@@ -32,15 +32,15 @@ export default {
       supplyRequests: [
         {
           id: 423232,
-          title: 'Surgery Masks',
-          description: 'Masks necessary for healthy health health healing.',
+          title: 'Latex Gloves',
+          description: 'Gloves necessary for healthy health health healing.',
           hospital: 'Sacred Heart Hospital',
           funding: '30',
-          img: '../img/facemask.jpg'
+          img: '../img/medicalgloves.jpg'
         },
         {
           id: 323222,
-          title: 'Medical Masks',
+          title: 'Surgical Masks',
           description: 'Masks necessary for healthy health health healing.',
           hospital: 'Our Lady of Perpetual Funding Hospital',
           funding: '23',
@@ -48,16 +48,15 @@ export default {
         },
         {
           id: 253222,
-          title: 'Ventilators',
-          description:
-            'Ventilators necessary for breathy breath breath breathing.',
+          title: 'N95 Masks',
+          description: 'Masks necessary for breathy breath breath breathing.',
           hospital: 'Copenhagen MD',
           funding: '64000',
-          img: '../img/facemask.jpg'
+          img: '../img/m95mask.jpg'
         },
         {
           id: 237222,
-          title: 'Surgery Masks',
+          title: 'Surgical Masks',
           description: 'Masks necessary for healthy health health healing.',
           hospital: 'Sacred Heart Hospital',
           funding: '30',
@@ -65,24 +64,23 @@ export default {
         },
         {
           id: 239222,
-          title: 'Medical Masks',
-          description: 'Masks necessary for healthy health health healing.',
+          title: 'CDC Suit',
+          description: 'Suit necessary for healthy health health healing.',
           hospital: 'Our Lady of Perpetual Funding Hospital',
           funding: '23',
-          img: '../img/facemask.jpg'
+          img: '../img/cdcsuit.jpg'
         },
         {
           id: 232022,
-          title: 'Ventilators',
-          description:
-            'Ventilators necessary for breathy breath breath breathing.',
+          title: 'N95 Mask',
+          description: 'Mask necessary for breathy breath breath breathing.',
           hospital: 'Copenhagen MD',
           funding: '64000',
-          img: '../img/facemask.jpg'
+          img: '../img/m95mask.jpg'
         },
         {
           id: 232282,
-          title: 'Surgery Masks',
+          title: 'Surgical Masks',
           description: 'Masks necessary for healthy health health healing.',
           hospital: 'Sacred Heart Hospital',
           funding: '30',
@@ -90,7 +88,7 @@ export default {
         },
         {
           id: 232225,
-          title: 'Medical Masks',
+          title: 'Surgical Masks',
           description: 'Masks necessary for healthy health health healing.',
           hospital: 'Our Lady of Perpetual Funding Hospital',
           funding: '23',
@@ -98,12 +96,11 @@ export default {
         },
         {
           id: 232422,
-          title: 'Ventilators',
-          description:
-            'Ventilators necessary for breathy breath breath breathing.',
+          title: 'Latex Gloves',
+          description: 'Gloves necessary for breathy breath breath breathing.',
           hospital: 'Copenhagen MD',
           funding: '64000',
-          img: '../img/facemask.jpg'
+          img: '../img/medicalgloves.jpg'
         }
       ]
     }
