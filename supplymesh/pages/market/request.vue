@@ -14,7 +14,12 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h3 class="card-title">{{ supplyRequest.title }}</h3>
+            <div class="row">
+              <h3 class="card-title col-md-8">{{ supplyRequest.title }}</h3>
+              <b-button class="col-md-4" squared type="reset" variant="warning"
+                >Bid to Fulfill this Request</b-button
+              >
+            </div>
             <p class="card-text">
               {{ supplyRequest.description }}
               <br />
@@ -24,6 +29,9 @@
                 >$ {{ supplyRequest.funding }} raised</span
               >
             </p>
+            <b-button squared type="submit" block variant="primary"
+              >Crowdfund this Request</b-button
+            >
           </div>
         </div>
       </div>
