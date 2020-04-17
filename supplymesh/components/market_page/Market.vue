@@ -1,6 +1,6 @@
 <template>
-  <a :href="'market/request?id=' + supplyRequest.id">
-    <div class="card" style="width: 18rem; margin-bottom: 2em;">
+  <a :href="'market/request?id=' + supplyRequest.id" style="margin-bottom:2em;">
+    <div class="card" style="width: 18rem; height: 100%;">
       <img class="card-img-top" :src="supplyRequest.img" alt="Card image cap" />
       <div class="card-body">
         <h3 class="card-title">{{ supplyRequest.title }}</h3>
