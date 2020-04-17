@@ -17,11 +17,11 @@
         </div>
         <div class="col-lg-5 my-auto">
           <div class="device-container">
-            <div class="device-mockup macbook portrait white">
+            <div class="device-mockup imac portrait white">
               <div class="device">
                 <div class="screen">
                   <img
-                    src="~/assets/img/phonescreen.png"
+                    src="~/assets/img/screenshot.png"
                     class="img-fluid"
                     alt=""
                   />
