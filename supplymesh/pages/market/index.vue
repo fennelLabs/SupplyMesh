@@ -74,7 +74,7 @@ export default {
     getAllRequests() {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().getAllRequests(
+      this.$store.state.contractInstance().getAllRequests(
         {
           gas: 300000,
           value: this.$store.state.web3.web3
@@ -93,7 +93,7 @@ export default {
     getRequestByKey(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().getSingleRequestByKey(
+      this.$store.state.contractInstance().getSingleRequestByKey(
         key,
         {
           gas: 300000,
@@ -113,7 +113,7 @@ export default {
     placeBid(key, price) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().placeBidOnBounty(
+      this.$store.state.contractInstance().placeBidOnBounty(
         key,
         price,
         {
@@ -134,7 +134,7 @@ export default {
     acceptBid(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().acceptBidOnBounty(
+      this.$store.state.contractInstance().acceptBidOnBounty(
         key,
         {
           gas: 300000,
@@ -153,7 +153,7 @@ export default {
     rejectBid(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().rejectBidOnBounty(
+      this.$store.state.contractInstance().rejectBidOnBounty(
         key,
         {
           gas: 300000,
@@ -172,7 +172,7 @@ export default {
     addBounty(price, title, description) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().addBountyForEntity(
+      this.$store.state.contractInstance().addBountyForEntity(
         price,
         title,
         description,
@@ -193,7 +193,7 @@ export default {
     payBounty(key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().payBountyForEntity(
+      this.$store.state.contractInstance().payBountyForEntity(
         key,
         {
           gas: 300000,
@@ -212,7 +212,7 @@ export default {
     fundBounty(volume, key) {
       this.winEvent = null
       this.pending = true
-      this.$store.state.web3.web3.contractInstance().fundBountyForEntity(
+      this.$store.state.contractInstance().fundBountyForEntity(
         volume,
         key,
         {

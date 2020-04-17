@@ -1,6 +1,6 @@
 export default {
 
-    address: '0x9E5662bEBd2102Ff803f0bf5D4a9F00b49C2C671',
+    address: '0x14665E6a3944F2ed14103b2e63B54947784d1875',
 
     ABI: [
         {
