@@ -6,12 +6,12 @@
           <div class="header-content mx-auto">
             <h1 class="mb-5">
               SupplyMesh brings communities together to fund and provide the
-              resources their healthcare providers need!
+              resources their healthcare providers need.
             </h1>
             <a
               href="#calltoaction"
               class="btn btn-outline btn-xl js-scroll-trigger"
-              >See how you can help!</a
+              >See how you can help</a
             >
           </div>
         </div>

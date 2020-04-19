@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 mx-auto">
-          <h2 class="section-heading">Support your local hospitals!</h2>
+          <h2 class="section-heading">Support your local hospitals</h2>
           <p>
             When outbreaks overwhelm traditional supplychains, SupplyMesh lets
             communities and vendors come together to fulfill the resource needs

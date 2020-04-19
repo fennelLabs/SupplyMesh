@@ -3,7 +3,7 @@
     <div class="container">
       <h2>
         We <i class="fas fa-heart"></i><br />
-        Healthcare Professionals!
+        Healthcare Professionals
       </h2>
       <!-- <ul class="list-inline list-social">
     <li class="list-inline-item social-twitter">

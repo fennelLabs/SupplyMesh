@@ -4,7 +4,7 @@
       <div class="container">
         <h2>Stop waiting.<br />Start helping.</h2>
         <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger"
-          >Let's Get Started!</a
+          >Let's Get Started</a
         >
       </div>
     </div>
